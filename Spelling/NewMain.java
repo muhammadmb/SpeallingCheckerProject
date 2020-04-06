@@ -7,7 +7,8 @@ public class NewMain {
       
         DictionaryLL o = new DictionaryLL();
         o.addWords("yy");
-        System.out.println(o.size());
+        Boolean e = o.isWord("yy");
+        System.out.println(e);
     }
     
 }
