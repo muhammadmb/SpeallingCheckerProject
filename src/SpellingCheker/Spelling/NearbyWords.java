@@ -1,6 +1,8 @@
 package SpellingCheker.Spelling;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 public class NearbyWords implements SpellingSuggest{
@@ -79,6 +81,53 @@ public class NearbyWords implements SpellingSuggest{
     
     @Override
     public List<String> suggestions(String word, int numSuggestions) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        List <String> queue = new LinkedList<>(); //String to explor
+        HashSet <String> visited = new HashSet <String>(); //to avoid exploring the same string multiple times
+        List <String> retList = new LinkedList<>(); //to return
+        
+        queue.add(word);
+        visited.add(word);
+        
+        while(!queue.isEmpty() && queue.size() != numSuggestions){
+            for(String s : distanceOne(queue.remove(0), true)){
+                if(!visited.contains(s)){
+                    visited.add(s);
+                    queue.add(s);
+                        if(dic.isWord(s)){
+                            retList.add(s);
+                        }
+                }
+            }
+        }
+        
+        
+        return retList;
     }
+    
+    public static void main(String[] args) {
+	   // basic testing code to get started
+	   String word = "love";
+	   // Pass NearbyWords any Dictionary implementation you prefer
+	   Dictionary d = new DictionaryHashSet();
+	   DictionaryLoader.loadDictionary(d, "data/dict.txt");
+	   NearbyWords w = new NearbyWords(d);
+	   List<String> l = w.distanceOne(word, true);
+	   System.out.println("One away word Strings for for \""+word+"\" are:");
+	   System.out.println(l+"\n");
+
+	   word = "love";
+	   List<String> suggest = w.suggestions(word, 10);
+	   System.out.println("Spelling Suggestions for \""+word+"\" are:");
+	   System.out.println(suggest);
+	   
+	   
+	// basic testing code to get started
+	   
+   }
+
+    
+    
 }
+
+    
