@@ -4,7 +4,24 @@ import java.util.List;
 
 public class WPTree implements WordPath{
 
-    private WPTreeNode root  ;
+    private WPTreeNode root;
+    private NearbyWords NW;
+
+    public WPTree() {
+        this.root = null;
+        Dictionary d = new DictionaryHashSet();
+        DictionaryLoader.loadDictionary(d, "data/dict.txt");
+        this.NW = new NearbyWords(d);
+}
+
+    public WPTree(NearbyWords NW) {
+        this.root = null;
+        this.NW = NW;
+    }
+    
+    
+    
+    
     
     @Override
     public List<String> findPath(String word1, String word2) {
