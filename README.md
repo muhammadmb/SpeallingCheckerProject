@@ -1,1 +1,1 @@
-# SpeallingCheckerProject
+# SpellingCheckerProject
