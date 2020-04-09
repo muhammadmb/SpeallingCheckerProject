@@ -1,1 +1,1 @@
-# SpllingCheckerProject
+# SpeallingCheckerProject
