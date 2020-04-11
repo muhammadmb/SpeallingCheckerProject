@@ -21,11 +21,7 @@ public class WPTree implements WordPath{
         this.root = null;
         this.NW = NW;
     }
-    
-    
-    
-    
-    
+
     @Override
     public List<String> findPath(String word1, String word2) {
 
@@ -119,7 +115,14 @@ public class WPTree implements WordPath{
         ret += "]\n";
         return ret;
     }
-     
+    
+    //testing
+    public static void main(String[] args) {
         
+        WPTree a = new WPTree();
+        
+        System.out.println(a.findPath("love", "view"));
+        
+    }
         
 }
