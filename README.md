@@ -1,4 +1,4 @@
-# SpellingCheckerProject
+# text Editior
 
 •	Check spelling of words and Auto complete.
 
